@@ -1,0 +1,7 @@
+IEX Cloud:
+public: pk_adf00b009bae4a78ae0e6577621d036d
+secret: sk_488f52ae718440fcbdd3f8db8d833628
+
+********************************************
+Alpha Vantage
+token: 1OMGYQDRAH6SASH6

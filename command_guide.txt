@@ -1,0 +1,54 @@
+*Setup env for kafka + Single node hadoop cluster:
+========================================
+*Use git-bash:
+bash setup_environment.sh
+
+*Start all container:
+====================
+bash run_containers.sh
+
+*Run kafka producer:
+====================
+python kafka/data_center_server_live_status_simulator.py
+
+
+*Run spark consumer:
+====================
+# Read "Run_Real_Time_Streaming_Data_Pipeline_using_Spark_Cluster_On_Docker_Notes.txt" in docs folder first
+spark-submit --master local[*] --jars /opt/workarea/spark_jars/commons-pool2-2.8.1.jar,/opt/workarea/spark_jars/postgresql-42.2.16.jar,/opt/workarea/spark_jars/spark-sql-kafka-0-10_2.12-3.0.1.jar,/opt/workarea/spark_jars/kafka-clients-2.6.0.jar,/opt/workarea/spark_jars/spark-streaming-kafka-0-10-assembly_2.12-3.0.1.jar --conf spark.executor.extraClassPath=/opt/workarea/spark_jars/commons-pool2-2.8.1.jar:/opt/workarea/spark_jars/postgresql-42.2.16.jar:/opt/workarea/spark_jars/spark-sql-kafka-0-10_2.12-3.0.1.jar:/opt/workarea/spark_jars/kafka-clients-2.6.0.jar:/opt/workarea/spark_jars/spark-streaming-kafka-0-10-assembly_2.12-3.0.1.jar --conf spark.executor.extraLibrary=/opt/workarea/spark_jars/commons-pool2-2.8.1.jar:/opt/workarea/spark_jars/postgresql-42.2.16.jar:/opt/workarea/spark_jars/spark-sql-kafka-0-10_2.12-3.0.1.jar:/opt/workarea/spark_jars/kafka-clients-2.6.0.jar:/opt/workarea/spark_jars/spark-streaming-kafka-0-10-assembly_2.12-3.0.1.jar --conf spark.driver.extraClassPath=/opt/workarea/spark_jars/commons-pool2-2.8.1.jar:/opt/workarea/spark_jars/postgresql-42.2.16.jar:/opt/workarea/spark_jars/spark-sql-kafka-0-10_2.12-3.0.1.jar:/opt/workarea/spark_jars/kafka-clients-2.6.0.jar:/opt/workarea/spark_jars/spark-streaming-kafka-0-10-assembly_2.12-3.0.1.jar real_time_streaming_data_pipeline.py
+
+*Run dashboard:
+====================
+# Read "Dashboard_Setup_Notes.txt" in docs folder
+
+
+
+***************************************************************
+Commonly used docker commands:
+
+Stop All Containers:
+====================
+
+docker stop $(docker ps -a -q)
+
+docker rm $(docker ps -a -q)
+
+Remove All Images:
+==================
+
+docker images -a
+
+docker rmi $(docker images -a -q)
+
+# Prune everything
+docker system prune
+
+# Only prune images
+docker image prune
+
+docker volume prune
+
+
+
+
+

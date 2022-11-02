@@ -1,0 +1,8 @@
+# Build docker-compose for running all application that we built
+version: "3.7"
+services:
+  masternode:
+    image: hadoop_spark_cluster:datamaking_hive
+    container_name: masternode
+    ports:
+    
